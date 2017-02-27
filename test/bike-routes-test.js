@@ -21,5 +21,15 @@ describe('Bike Routes Module', function() {
         done();
       });
     });
+    it('should throw 400 error for empty post', function(done) {
+      request.post('localhost:3000/api/bike')
+      .send()
+      .end((err, res) => {
+        expect(err).to.be.an('error');
+        expect(res.status).to.equal(400);
+        expect(res.text).to.equal('bad request');
+        done();
+      });
+    });
   });
 });

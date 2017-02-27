@@ -21,7 +21,7 @@ Bike.createBike = function(_bike) {
 
   try {
     let bike = new Bike(_bike.brand, _bike.type);
-    return storage.createItem(bike);
+    return storage.createItem('bike', bike);
   } catch(err) {
     return Promise.reject(err);
   }
