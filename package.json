@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "DEBUG='bike*' node server.js",
+    "start": "DEBUG='bike*' node server.js"
   },
   "repository": {
     "type": "git",
