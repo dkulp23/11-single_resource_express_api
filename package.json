@@ -12,7 +12,13 @@
     "morgan": "^1.8.1",
     "node-uuid": "^1.4.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^4.0.1",
+    "superagent": "^3.5.0"
+  },
   "scripts": {
     "start": "DEBUG='bike*' node server.js"
   },
