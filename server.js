@@ -28,6 +28,26 @@ app.get('/api/bike/:id', function(req, res, next) {
   .catch( err => next(err));
 });
 
+app.delete('/api/bike/:id', function(req, res, next) {
+  debug('DELETE: /api/bike');
+
+  Bike.deleteBike(req.params.id)
+  .then(res.status(204).send())
+  .catch( err => next(err));
+});
+
+app.put('*', function(req, res, next) {
+  debug('* for undefined put routes');
+
+  next(new createError(404, 'Not Found'));
+});
+
+app.get('/api/bike/', function(req, res, next) {
+  debug('get req without id');
+
+  next(new createError(400, 'Bad Request'));
+});
+
 app.use(function(err, req, res, next) {
   debug('error handler middleware');
 

@@ -41,9 +41,9 @@ describe('Bike Routes Module', function() {
     });
   });
   describe('GET :3000/api/bike', function() {
-    let testId = 'f8dbc3c0-fd4d-11e6-be04-3b78bdf018ba';
+    // let testId = 'f8dbc3c0-fd4d-11e6-be04-3b78bdf018ba';
     it('should retun bike object and 200 status', function(done) {
-      request.get(`localhost:3000/api/bike/${testId}`)
+      request.get(`localhost:3000/api/bike/${testBike.id}`)
       .end((err, res) => {
         if(err) return done(err);
         expect(res.status).to.equal(200);
@@ -65,6 +65,28 @@ describe('Bike Routes Module', function() {
       .end((err, res) => {
         expect(res.status).to.equal(err.status);
         expect(res.status).to.equal(400);
+        done();
+      });
+    });
+  });
+  describe('DELETE :3000/api/bike', function() {
+    it('should return a 204 message with no content', function(done) {
+      request.delete(`localhost:3000/api/bike/${testBike.id}`)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(204);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.be.empty;
+        done();
+        // expect(res)
+      });
+    });
+  });
+  describe('PUT :3000/api/bike', function() {
+    it('should return a 404 error', function(done) {
+      request.put('localhost:3000/api/bike')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
         done();
       });
     });

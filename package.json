@@ -20,7 +20,7 @@
     "superagent": "^3.5.0"
   },
   "scripts": {
-    "start": "DEBUG='bike*' node server.js"
+    "start": "DEBUG='bike*' nodemon server.js"
   },
   "repository": {
     "type": "git",

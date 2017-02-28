@@ -31,3 +31,8 @@ Bike.fetchBike = function(id) {
   debug('fetchBike');
   return storage.fetchItem('bike', id);
 };
+
+Bike.deleteBike = function(id) {
+  debug('deleteBike');
+  return storage.deleteItem('bike', id);
+};
