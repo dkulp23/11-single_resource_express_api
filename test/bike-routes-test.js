@@ -25,9 +25,17 @@ describe('Bike Routes Module', function() {
       request.post('localhost:3000/api/bike')
       .send()
       .end((err, res) => {
-        expect(err).to.be.an('error');
-        expect(res.status).to.equal(400);
-        expect(res.text).to.equal('bad request');
+        expect(res.status).to.equal(err.status);
+        expect(res.text).to.equal('BadRequestError');
+        done();
+      });
+    });
+    it('should throw 400 error wich invalid keys', function(done) {
+      request.post('localhost:3000/api/bike')
+      .send({ snow: 'man', ski: 'boot'})
+      .end((err, res) => {
+        expect(res.status).to.equal(err.status);
+        expect(res.text).to.equal('BadRequestError');
         done();
       });
     });
