@@ -20,6 +20,14 @@ app.post('/api/bike', jsonParser, function(req, res, next) {
   .catch( err => next(err));
 });
 
+app.get('/api/bike/:id', function(req, res, next) {
+  debug('GET: /api/bike');
+
+  Bike.fetchBike(req.params.id)
+  .then( bike => res.json(bike))
+  .catch( err => next(err));
+});
+
 app.use(function(err, req, res, next) {
   debug('error handler middleware');
 

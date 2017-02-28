@@ -40,4 +40,33 @@ describe('Bike Routes Module', function() {
       });
     });
   });
+  describe('GET :3000/api/bike', function() {
+    let testId = 'f8dbc3c0-fd4d-11e6-be04-3b78bdf018ba';
+    it('should retun bike object and 200 status', function(done) {
+      request.get(`localhost:3000/api/bike/${testId}`)
+      .end((err, res) => {
+        if(err) return done(err);
+        expect(res.status).to.equal(200);
+        expect(res.body.brand).to.equal(testBike.brand);
+        expect(res.body.type).to.equal(testBike.type);
+        done();
+      });
+    });
+    it('should return 404 not found', function(done) {
+      request.get('localhost:3000/api/bike/123456')
+      .end((err, res) => {
+        expect(res.status).to.equal(err.status);
+        expect(res.status).to.equal(404);
+        done();
+      });
+    });
+    it('should return 400 bad request error', function(done) {
+      request.get('localhost:3000/api/bike')
+      .end((err, res) => {
+        expect(res.status).to.equal(err.status);
+        expect(res.status).to.equal(400);
+        done();
+      });
+    });
+  });
 });
